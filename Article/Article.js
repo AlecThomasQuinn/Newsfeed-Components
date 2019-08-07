@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'MVP Article',
+    date: 'Today, DUH',
+    firstParagraph: `This is the article I need for MVP. Here is the first paragraph of that article.`,
+
+    secondParagraph: `Here is the second paragraph of that article.`,
+
+    thirdParagraph: `Here is the third.`
   }
 ];
 
@@ -147,12 +156,20 @@ function createArticle(title, date, p1, p2, p3){
   articleP2.textContent = p2;
   articleP3.textContent = p3;
   articleButton.textContent = 'E X P A N D';
+  
+  //need the expandButton to toggle the class of the article div  
+  //from article to article-open
+
+  articleButton.addEventListener('click', event => {
+    //console.log('clicked:', title);
+    article.classList.toggle('article-open');
+  });
 
   return article;
 };
 
 data.forEach(dataObject => {
-  console.log(dataObject.title);
+  //console.log(dataObject.title);
   articles.appendChild(createArticle(dataObject.title, dataObject.date,
     dataObject.firstParagraph, dataObject.secondParagraph, dataObject.thirdParagraph));
 });
