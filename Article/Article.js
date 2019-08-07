@@ -114,7 +114,7 @@ const data = [
 */
 
 const articles = document.querySelector('.articles');
-console.log(articles);
+console.log("articles:", articles);
 
 function createArticle(title, date, p1, p2, p3){
 
@@ -146,11 +146,14 @@ function createArticle(title, date, p1, p2, p3){
   articleP1.textContent = p1;
   articleP2.textContent = p2;
   articleP3.textContent = p3;
+  articleButton.textContent = 'E X P A N D';
 
   return article;
 };
 
 data.forEach(dataObject => {
-  articles.appendChild(createArticle(dataObject.title, dataObject.date, 
+  console.log(dataObject.title);
+  articles.appendChild(createArticle(dataObject.title, dataObject.date,
     dataObject.firstParagraph, dataObject.secondParagraph, dataObject.thirdParagraph));
 });
+
