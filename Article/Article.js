@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'MVP Article',
+    date: 'Today, DUH',
+    firstParagraph: `This is the article I need for MVP. Here is the first paragraph of that article.`,
+
+    secondParagraph: `Here is the second paragraph of that article.`,
+
+    thirdParagraph: `Here is the third.`
   }
 ];
 
@@ -112,3 +121,57 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+const articles = document.querySelector('.articles');
+console.log("articles:", articles);
+
+function createArticle(title, date, p1, p2, p3){
+
+  //create elements via DOM
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('h2');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const articleButton = document.createElement('span');
+
+  //create structure/heirarchy of new DOM elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(articleButton);
+
+  //set classes for new elements
+  article.classList.add('article');
+  articleP1.classList.add('date');
+  articleButton.classList.add('expandButton');
+
+  //setting properties to be passes into their respective elements
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = p1;
+  articleP2.textContent = p2;
+  articleP3.textContent = p3;
+  articleButton.textContent = 'E X P A N D';
+  
+  //need the expandButton to toggle the class of the article div  
+  //from article to article-open
+
+  articleButton.addEventListener('click', event => {
+    //console.log('clicked:', title);
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+};
+
+data.forEach(dataObject => {
+  //console.log(dataObject.title);
+  articles.appendChild(createArticle(dataObject.title, dataObject.date,
+    dataObject.firstParagraph, dataObject.secondParagraph, dataObject.thirdParagraph));
+});
+
+  
